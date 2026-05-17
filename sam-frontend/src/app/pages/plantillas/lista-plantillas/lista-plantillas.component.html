@@ -1,0 +1,96 @@
+<!-- 🔷 Navbar unificado para Plantillas -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light px-4 shadow-sm">
+  <div class="container-fluid">
+    <a class="navbar-brand d-flex align-items-center fw-bold" routerLink="/plantillas">
+      <img src="assets/logoSAM.jpg" alt="Logo SAM" height="60" class="me-2" />
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+    <div class="d-flex ms-auto">
+      <a class="nav-link me-3 text-dark fw-semibold" routerLink="/gestion-datos" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        Gestión de Datos
+      </a>
+      <a class="nav-link me-3 text-dark fw-semibold" routerLink="/plantillas" routerLinkActive="active">
+        Plantillas
+      </a>
+      <a class="nav-link me-3 text-dark fw-semibold" routerLink="/gestion-correos" routerLinkActive="active">
+        Gestión de correos
+      </a>
+
+      <!-- 🔧 Dropdown de Configuración -->
+      <div class="nav-item dropdown me-3">
+        <a class="nav-link dropdown-toggle text-dark fw-semibold" href="#" role="button" data-bs-toggle="dropdown">
+          Configuración
+        </a>
+        <ul class="dropdown-menu">
+          <li>
+            <a class="dropdown-item" routerLink="/smtp-config">Configuración de correo (SMTP)</a>
+          </li>
+        </ul>
+      </div>
+
+      <a class="nav-link text-danger fw-semibold" (click)="confirmarSalir()">Salir</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+<!-- 🔷 Contenido principal -->
+<div class="container mt-5">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="fw-bold text-primary">📋 Plantillas Promocionales</h2>
+    <a routerLink="crear" class="btn btn-primary d-flex align-items-center">
+      <i class="fas fa-plus me-2"></i> Crear Plantilla
+    </a>
+  </div>
+
+  <!-- Tabla -->
+  <div class="card border-0 shadow-lg">
+    <div class="card-body p-4">
+      <table class="table table-hover align-middle">
+        <thead class="table-light text-center">
+          <tr>
+            <th>#</th>
+            <th>Título</th>
+            <th>Fecha de creación</th>
+            <th class="text-end">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let plantilla of plantillas; let i = index">
+            <td class="text-center">{{ i + 1 }}</td>
+            <td>{{ plantilla.title }}</td>
+            <td>{{ plantilla.created_at | date: 'dd/MM/yyyy' }}</td>
+            <td class="text-end">
+              <button class="btn btn-sm btn-outline-info me-2" (click)="verPlantilla(plantilla)">
+                <i class="fas fa-eye me-1"></i> Ver
+              </button>
+              <button class="btn btn-sm btn-outline-warning me-2" (click)="editarPlantilla(plantilla)">
+                <i class="fas fa-edit me-1"></i> Editar
+              </button>
+              <button class="btn btn-sm btn-outline-danger" (click)="eliminarPlantilla(plantilla)">
+                <i class="fas fa-trash-alt me-1"></i> Eliminar
+              </button>
+            </td>
+          </tr>
+          <tr *ngIf="plantillas.length === 0">
+            <td colspan="4" class="text-center text-muted">No hay plantillas disponibles.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ✅ Botón continuar -->
+  <div class="text-end mt-4">
+    <button class="btn btn-success" (click)="continuar()">
+      <i class="fas fa-arrow-right me-1"></i> Continuar
+    </button>
+  </div>
+
+  <!-- Rutas hijas -->
+  <router-outlet></router-outlet>
+</div>

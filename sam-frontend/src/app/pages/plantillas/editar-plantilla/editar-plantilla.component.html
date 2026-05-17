@@ -1,0 +1,52 @@
+<div class="container mt-4">
+  <div class="card shadow p-4">
+    <!-- Título principal -->
+    <h2 class="text-center mb-4 text-warning fw-bold">
+      🛠️ Editar Plantilla Promocional
+    </h2>
+
+    <!-- Formulario de edición -->
+    <form (ngSubmit)="guardarCambios()" #form="ngForm">
+      <!-- Campo de Título -->
+      <div class="mb-4">
+        <label for="titulo" class="form-label fw-bold">Título de la Promoción</label>
+        <input
+          id="titulo"
+          type="text"
+          class="form-control"
+          required
+          [(ngModel)]="titulo"
+          name="titulo"
+          placeholder="Ej: Nueva promo primavera"
+        />
+      </div>
+
+      <!-- Subtítulo editor -->
+      <h5 class="text-center fw-bold mb-3">Contenido de la Promoción</h5>
+
+      <!-- Editor TinyMCE -->
+      <div class="d-flex justify-content-center mb-4">
+        <div class="w-100" style="max-width: 850px;">
+          <editor
+            [(ngModel)]="contenido"
+            name="contenido"
+            [init]="editorConfig"
+            apiKey="no-api-key"
+            class="bg-white border rounded"
+            [style.height]="'400px'"
+          ></editor>
+        </div>
+      </div>
+
+      <!-- Botones de acción -->
+      <div class="d-flex justify-content-between">
+        <button type="button" class="btn btn-outline-secondary" (click)="volver()">
+          <i class="fas fa-arrow-left me-1"></i> Volver
+        </button>
+        <button type="submit" class="btn btn-primary px-4" [disabled]="form.invalid">
+          Guardar Cambios
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

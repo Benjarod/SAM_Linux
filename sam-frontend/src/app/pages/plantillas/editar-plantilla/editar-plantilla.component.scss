@@ -1,0 +1,22 @@
+:host {
+  display: block;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.quill-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+
+  // 🎯 Aplica el mismo ancho que en crear-plantilla
+  > div {
+    width: 80%;
+  }
+
+  .quill-editor {
+    width: 100% !important;
+    max-width: 100%;
+  }
+}

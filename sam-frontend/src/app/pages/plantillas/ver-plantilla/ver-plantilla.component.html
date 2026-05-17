@@ -1,0 +1,24 @@
+<div class="container mt-4 text-center">
+  <!-- Título principal -->
+  <h2 class="mb-2 fw-bold">
+    🔖 Nombre plantilla: {{ titulo }}
+  </h2>
+
+  <!-- Subtítulo -->
+  <h5 class="text-muted mb-2 fw-semibold">Contenido de la Promoción</h5>
+
+  <!-- Línea divisoria elegante -->
+  <hr class="divider my-4">
+
+  <!-- Contenido renderizado sin alterar estilos internos -->
+  <div class="d-flex justify-content-center mb-4">
+    <div class="card p-4 shadow" style="max-width: 1000px; width: 100%;">
+      <div [innerHTML]="contenidoSeguro" style="text-align: initial; overflow-x: auto;"></div> 
+    </div>
+  </div>
+
+  <!-- Botón volver -->
+  <button class="btn btn-outline-secondary" routerLink="/plantillas">
+    <i class="fas fa-arrow-left me-1"></i> Volver
+  </button>
+</div>

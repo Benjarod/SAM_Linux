@@ -1,0 +1,29 @@
+<div class="registro-container">
+  <div class="registro-card">
+    <div class="registro-header">
+      <h2 class="titulo-registro">Crear Cuenta</h2>
+      <img src="https://cdn-icons-png.flaticon.com/512/9131/9131529.png" alt="Avatar" class="avatar" />
+    </div>
+
+    <form [formGroup]="registroForm" (ngSubmit)="onSubmit()">
+      <div class="form-row">
+        <input type="text" placeholder="Nombre completo" formControlName="name" />
+        <input type="text" placeholder="Institución" formControlName="institucion" />
+      </div>
+      <div class="form-row">
+        <input type="email" placeholder="Correo electrónico" formControlName="email" />
+        <input type="password" placeholder="Contraseña" formControlName="password" />
+      </div>
+      <div class="form-row">
+        <input type="password" placeholder="Confirmar contraseña" formControlName="password_confirmation" />
+      </div>
+
+      <div class="button-group">
+        <button type="submit" class="btn btn-primary">Crear Cuenta</button>
+        <button type="button" class="btn btn-outline-primary" (click)="goToLogin()">Iniciar Sesión</button>
+      </div>
+
+      <p class="error-message" *ngIf="errorMessage">{{ errorMessage }}</p>
+    </form>
+  </div>
+</div>

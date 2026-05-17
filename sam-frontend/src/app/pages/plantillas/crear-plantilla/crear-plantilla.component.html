@@ -1,0 +1,46 @@
+<div class="container mt-4">
+  <div class="card shadow p-4">
+    <!-- Título principal -->
+    <h2 class="text-center mb-4">
+      📝 <strong class="text-primary">Crear Nueva Plantilla</strong>
+    </h2>
+
+    <!-- Campo de Título -->
+    <div class="mb-4">
+      <label for="titulo" class="form-label fw-bold">Título de la Promoción</label>
+      <input
+        id="titulo"
+        type="text"
+        class="form-control"
+        [(ngModel)]="titulo"
+        name="titulo"
+        placeholder="Ej: Promoción Dental Octubre"
+      />
+    </div>
+
+    <!-- Subtítulo del Editor -->
+    <h5 class="text-center fw-bold mb-3">Contenido de la Promoción</h5>
+
+    <!-- Editor TinyMCE -->
+    <div class="d-flex justify-content-center mb-4">
+      <div class="w-100" style="max-width: 850px;">
+        <editor
+          #editor
+          [(ngModel)]="contenido"
+          [init]="editorInit"
+          [style.height]="'400px'"
+        ></editor>
+      </div>
+    </div>
+
+    <!-- Botones de acción -->
+    <div class="d-flex justify-content-between">
+      <button class="btn btn-outline-secondary" routerLink="/plantillas">
+        <i class="fas fa-arrow-left me-1"></i> Volver
+      </button>
+      <button class="btn btn-success px-4" (click)="crearPlantilla()">
+        <i class="fas fa-paper-plane me-2"></i> Crear
+      </button>
+    </div>
+  </div>
+</div>

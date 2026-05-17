@@ -1,0 +1,168 @@
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light px-4 shadow-sm">
+  <div class="container-fluid">
+    <a class="navbar-brand d-flex align-items-center fw-bold" routerLink="/gestion-datos">
+      <img src="assets/logoSAM.jpg" alt="Logo SAM" height="60" class="me-2" />
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+    <div class="d-flex ms-auto align-items-center">
+      <a class="nav-link me-3 text-dark fw-semibold" routerLink="/gestion-datos" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        Gestión de Datos
+      </a>
+      <a class="nav-link me-3 text-dark fw-semibold" routerLink="/plantillas" routerLinkActive="active">
+        Plantillas
+      </a>
+      <a class="nav-link me-3 text-dark fw-semibold" routerLink="/gestion-correos" routerLinkActive="active">
+        Gestión de correos
+      </a>
+      <div class="nav-item dropdown me-3">
+        <a class="nav-link dropdown-toggle text-dark fw-semibold" href="#" id="configuracionDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Configuración
+        </a>
+        <div class="dropdown-menu" aria-labelledby="configuracionDropdown">
+          <a class="dropdown-item" routerLink="/smtp-config" routerLinkActive="active">
+            Configuración de Correo (SMTP)
+          </a>
+        </div>
+      </div>
+      <a class="nav-link text-danger fw-semibold" (click)="confirmarSalir()">Salir</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Contenido principal -->
+<div class="gestion-container">
+  <div class="card">
+    <h2 class="titulo">Gestión de Datos</h2>
+
+    <!-- Mensaje de bienvenida -->
+    <div class="alert alert-info d-inline-block py-2 px-3 mb-4">
+      👋 Bienvenido Sr. {{ nombreUsuario }}!
+    </div>
+
+    <!-- 1. Subida de Excel -->
+    <section class="bloque">
+      <h5>1. Importe su archivo Excel</h5>
+      <div class="importar-contenedor">
+        <input type="file" accept=".xlsx,.xls" (change)="onFileSelected($event)" class="form-control" />
+        <button type="button" class="btn btn-success mt-2" [disabled]="!archivoExcel" (click)="importarArchivo()">
+          Importar
+        </button>
+      </div>
+    </section>
+
+    <!-- 2. Filtros -->
+    <section class="bloque mt-4">
+      <h5>2. Filtros de búsqueda</h5>
+      <div class="row">
+        <div class="col-md-3">
+          <label>Edad desde</label>
+          <input type="number" class="form-control" [(ngModel)]="edadMin" placeholder="Ej: 18" />
+        </div>
+        <div class="col-md-3">
+          <label>Edad hasta</label>
+          <input type="number" class="form-control" [(ngModel)]="edadMax" placeholder="Ej: 40" />
+        </div>
+        <div class="col-md-3">
+          <label>Sexo</label>
+          <select class="form-control" [(ngModel)]="filtroSexo">
+            <option value="">Todos</option>
+            <option value="M">Masculino</option>
+            <option value="F">Femenino</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <label>Buscar nombre/apellido</label>
+          <input type="text" class="form-control" [(ngModel)]="filtroNombre" placeholder="Ej: Juan Pérez" />
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Exportar -->
+    <div class="mb-3 d-flex justify-content-end">
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+          <i class="fas fa-file-export"></i> Exportar
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" (click)="exportarRegistros('xlsx')">Exportar a Excel (.xlsx)</a></li>
+          <li><a class="dropdown-item" (click)="exportarRegistros('csv')">Exportar a CSV (.csv)</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 4. Tabla -->
+    <section class="bloque">
+      <h5>3. Registros actuales en base de datos</h5>
+      <div class="tabla-responsive" *ngIf="!cargando; else loading">
+        <table class="table table-striped table-bordered tabla-datos">
+          <thead>
+            <tr>
+              <th><input type="checkbox" [(ngModel)]="selectAll" (change)="toggleSeleccionarTodos()" /></th>
+              <th>RUT</th>
+              <th>Nombres</th>
+              <th>Apellido Paterno</th>
+              <th>Apellido Materno</th>
+              <th>Edad Persona</th>
+              <th>Sexo</th>
+              <th>Ficha Clínica</th>
+              <th>Domicilio</th>
+              <th>Fono</th>
+              <th>Celular</th>
+              <th>Email</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let persona of registrosFiltrados | paginate: { itemsPerPage: 10, currentPage: page }">
+              <td><input type="checkbox" [(ngModel)]="persona.selected" (change)="toggleSeleccion(persona, $event)" /></td>
+              <td>{{ persona.rut || 'Sin datos' }}</td>
+              <td>{{ persona.nombres || 'Sin datos' }}</td>
+              <td>{{ persona.ap_pat || 'Sin datos' }}</td>
+              <td>{{ persona.ap_mat || 'Sin datos' }}</td>
+              <td>{{ persona.edad_persona ?? 'N/A' }}</td>
+              <td>{{ persona.sexo || 'Sin datos' }}</td>
+              <td>{{ persona.ficha_clinica || 'Sin datos' }}</td>
+              <td>{{ persona.domicilio || 'Sin datos' }}</td>
+              <td>{{ persona.fono || 'Sin datos' }}</td>
+              <td>{{ persona.celu || 'Sin datos' }}</td>
+              <td>{{ persona.email || 'Sin datos' }}</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <pagination-controls (pageChange)="page = $event"></pagination-controls>
+
+        <div *ngIf="registros.length === 0" class="alert alert-warning">
+          No hay registros encontrados.
+        </div>
+      </div>
+
+      <ng-template #loading>
+        <p class="text-info">Cargando registros...</p>
+      </ng-template>
+    </section>
+
+    <!-- Botones inferiores -->
+    <div class="acciones mt-4 row">
+      <div class="col-md-4 d-flex justify-content-start">
+        <button type="button" class="btn btn-success w-100" (click)="guardarSeleccionados()" [disabled]="seleccionados.length === 0">
+          Guardar Datos Seleccionados
+        </button>
+      </div>
+      <div class="col-md-4 d-flex justify-content-center">
+        <button type="button" class="btn btn-danger w-100" (click)="eliminarRegistros()">
+          Eliminar registros
+        </button>
+      </div>
+      <div class="col-md-4 d-flex justify-content-end">
+        <button type="button" class="btn btn-primary w-100" (click)="irAPlantillas()">
+          Continuar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+@media (max-width: 1200px) {
+  .form-control {
+    width: 100%;
+  }
+
+  button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+}

@@ -1,0 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+body {
+    background-color: #f5f7fa;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .vista-previa-plantilla .contenido img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+  .vista-previa-plantilla .contenido {
+    overflow-x: auto;
+    max-width: 100%;
+  }
+
+  /* ✅ Ocultar el botón "Get all features" de TinyMCE en global */
+  .tox-promotion {
+    display: none !important;
+  }
+
+  

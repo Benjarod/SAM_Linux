@@ -1,0 +1,79 @@
+<div class="container mt-4">
+  <div class="card shadow p-5 rounded-3">
+
+    <div *ngIf="mostrarAlerta" class="alert alert-info alert-dismissible fade show" role="alert">
+      <strong>¡Atención!</strong> Añade los datos para la configuración SMTP de tu correo.<br>
+      <span>Ejemplo: <b>Servidor SMTP</b>: smtp.mailgun.org, <b>Puerto</b>: 587, <b>Usuario</b>: usuario&#64;mail.com, <b>Contraseña</b>: tu-contraseña, <b>Encriptación</b>: TLS</span>
+      <button type="button" class="btn-close" aria-label="Close" (click)="cerrarAlerta()"></button>
+    </div>
+
+    <h2 class="text-center mb-4 fw-bold">
+      ⚙️ Configuración SMTP del Usuario
+    </h2>
+
+    <form [formGroup]="smtpForm" (ngSubmit)="guardar()">
+      <div class="form-group mb-3">
+        <label for="mailer">Mailer</label>
+        <input id="mailer" formControlName="mailer" class="form-control" placeholder="smtp, mailgun, etc.">
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="host">Servidor SMTP</label>
+        <input id="host" formControlName="host" class="form-control" placeholder="smtp.mailgun.org">
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="port">Puerto</label>
+        <input type="number" id="port" formControlName="port" class="form-control">
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="username">Usuario SMTP</label>
+        <input id="username" formControlName="username" class="form-control">
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="email_from">
+          Correo Remitente
+          <ng-container *ngIf="isGmail">
+            <small class="text-muted">(opcional - se usará automáticamente el Usuario SMTP)</small>
+          </ng-container>
+          <ng-container *ngIf="!isGmail">
+            <small class="text-danger">*</small>
+          </ng-container>
+        </label>
+        <input id="email_from" formControlName="email_from" class="form-control" placeholder="remitente@midominio.com">
+        <small class="form-text text-muted" *ngIf="isGmail">
+          <i class="fas fa-info-circle"></i> Para Gmail, si dejas este campo vacío, se usará automáticamente la cuenta configurada en Usuario SMTP.
+        </small>
+        <small class="form-text text-muted" *ngIf="!isGmail">
+          Este correo aparecerá como remitente de tus envíos.
+        </small>
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="password">Contraseña SMTP</label>
+        <input type="password" id="password" formControlName="password" class="form-control">
+      </div>
+
+      <div class="form-group mb-4">
+        <label for="encryption">Encriptación</label>
+        <select id="encryption" formControlName="encryption" class="form-control">
+          <option value="tls">TLS</option>
+          <option value="ssl">SSL</option>
+        </select>
+      </div>
+
+      <div class="d-flex justify-content-between">
+        <button class="btn btn-outline-secondary" type="button" (click)="volver()">
+          <i class="fas fa-arrow-left me-1"></i> Volver
+        </button>
+
+        <button class="btn btn-primary" type="submit" [disabled]="loading">
+          {{ loading ? 'Guardando...' : 'Guardar Configuración' }}
+        </button>
+      </div>
+    </form>
+
+  </div>
+</div>

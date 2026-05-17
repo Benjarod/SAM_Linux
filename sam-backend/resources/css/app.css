@@ -1,0 +1,398 @@
+*{
+    font-family: verdana;
+}
+/*auth*/
+    #titulo_registro, #titulo_acceso{
+        background-color: #54a2e2;
+        color: white;
+        padding: 10px;
+        border-radius: 5px 5px 0 0;
+        font-size:20px;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    #titulo-home{
+        background-color: #54a2e2;
+        color: white;
+        padding: 10px;
+        border-radius: 5px 5px 0 0;
+        font-size:20px;
+        font-weight: bold;
+        text-align: left;
+    }
+
+    #p-home{
+        color: #54a2e2;
+    }
+
+/* input acceso y registro */
+    #email, #name, #institucion, #password, #password_confirmation{
+        width: 100%; /* Ancho completo del contenedor */
+        max-width: 400px; /* Ajusta según sea necesario */
+    }
+
+/* Gestion de datos */
+
+    /* boton exportar a excel o csv */
+    body > main > div > div > div:nth-child(1) > div > div > div > div.col-12.col-sm-6.d-flex.justify-content-sm-start.justify-content-center > div.me-1 > div > button{
+        background-color: #54a2e2;
+    }
+
+    /*Titulo de gestion de datos*/
+    #titulo_GBD{
+        color: #54a2e2;
+        font-family: Verdana;
+        text-align: left;
+    }
+
+    /* instrucciones paso a paso */
+    .p-gestion-datos {
+        color: #54a2e2;
+    }
+
+    #file{
+        background-color: #54a2e2; /* Color azul */
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 8px; /* Bordes redondeados */
+        font-size: 16px; /* Tamaño de la letra */
+        cursor: pointer;
+        transition: background-color 0.5s ease; /* Efecto de transición */
+    }
+
+    #file:hover {
+        background-color: #0056b3; /* Color azul más oscuro en hover */
+    }
+
+    #btn-importar{
+        background-color: #5cb95a; /* Color azul */
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 8px; /* Bordes redondeados */
+        font-size: 16px; /* Tamaño de la letra */
+        cursor: pointer;
+        transition: background-color 0.5s ease; /* Efecto de transición */
+    }
+
+    #btn-importar:hover {
+        background-color: #048f01; /* Color azul más oscuro en hover */
+    }
+/* barra de navegacion main */
+    #navbar_custom{
+        background-color: #54a2e2;
+        border-radius: 10px 10px 10px 10px;
+        margin: 10px;
+    }
+
+    img{
+        border-radius: 10px;
+    }
+
+    .main-nav-item {
+        background-color: #54a2e2; /* Color azul */
+        margin: 6px;
+        border: none;
+        border-radius: 8px; /* Bordes redondeados */
+        font-size: 15px; /* Tamaño de la letra */
+        cursor: pointer;
+        transition: background-color 1s ease; /* Efecto de transición */
+    }
+    .main-nav-item:hover {
+        background-color: #1d6abc; /* Color azul */
+    }
+
+/* Barra de navegación auth */
+
+#navbarNav{
+    margin-right: 340px;
+}
+
+.auth-nav-item {
+    background-color: #ffffff; /* Color azul */
+    margin: 6px;
+    border: none;
+    border-radius: 8px; /* Bordes redondeados */
+    font-size: 15px; /* Tamaño de la letra */
+    cursor: pointer;
+    transition: background-color 1s ease; /* Efecto de transición */
+}
+.auth-nav-item:hover {
+    background-color: #c1c1c1; /* Color azul */
+}
+
+/* Promociones */
+    /* index promociones */
+
+    #titulo_plantillas_promociones{
+        color: #54a2e2;
+        font-family: Verdana;
+        text-align: left;
+        margin-bottom: 40px;
+    }
+
+    #btn_crear_plantilla{
+        background-color: #54a2e2; /* Color azul */
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 8px; /* Bordes redondeados */
+        font-size: 16px; /* Tamaño de la letra */
+        cursor: pointer;
+        transition: background-color 0.5s ease; /* Efecto de transición */
+    }
+
+    #btn_crear_plantilla:hover {
+        background-color: #0056b3; /* Color azul más oscuro en hover */
+    }
+
+    .crear-plantilla-container {
+        display: flex; /* O inline-block */
+        align-items: center; /* Alinea verticalmente los elementos */
+    }
+
+    #btn_ver {
+        color: #5cb95a;
+    }
+    #btn_ver:hover {
+        color: #048f01;
+    }
+
+    #btn_eliminar {
+        color: #e0514e;
+    }
+    #btn_eliminar:hover {
+        color: #c00300;
+    }
+
+    #btn_editar {
+        color: #5bbfdf;
+    }
+    #btn_editar:hover {
+        color: #009ed2;
+    }
+
+    .p-index-promociones{
+        color: #54a2e2;
+    }
+
+    /* creacion de plantilla */
+    #titulo-CrearPlantilla{
+        font-weight: bold;
+        margin-top: 50px;
+        color: #54a2e2;
+        font-family: Verdana;   
+    }
+
+    #descripcion_promocion{
+        margin-top: 10px;
+    }
+
+    .p-crear-promociones{
+        color: #54a2e2;
+    }
+
+    /* Ver plantilla */
+    #container-nombre-promocion{
+        margin: 100px;
+    }
+    #h1-nombre-plantilla{
+        align-items: center;
+        color: #54a2e2;
+    }
+    #h1-nombre-plantilla span{
+        color: black;
+        font-size: 23px;
+    }
+
+    #titulo-promocion{
+        margin-top: 40px;
+    }
+
+    #contenido-promocion{
+        border: 1px solid #54a2e2; /* Borde negro */
+        border-radius: 15px; /* Bordes redondeados */
+        padding: 10px; /* Espaciado interno */
+        margin: 10px 0; /* Espacio externo */
+        font-size: 16px; /* Tamaño de la letra */
+        box-sizing: border-box; /* Evita que el padding afecte el ancho total */
+    }
+
+    /* editar plantilla */
+    #titulo-editar-promocion{
+        margin-top:40px;
+        color: #54a2e2;
+        font-weight: bold;
+    }
+
+    #editar-descripcion-promocion{
+        margin-top: 10px;
+    }
+
+    .p-editar-promociones{
+        color: #54a2e2;
+    }
+    
+/* Envio de correos */
+    #titulo_EnvioCorreos{
+        color: #54a2e2;
+        font-family: Verdana;
+        text-align: left;
+    }
+
+    #form-correo{
+        font-family: verdana;
+    }
+
+    /* Texto de promocion */
+    .promocion-container {
+        display: flex; /* O inline-block */
+        align-items: center; /* Alinea verticalmente los elementos */
+        margin-top: 50px;
+    }
+    .promocion-container p {
+        color: black;
+        margin-left: 10px; /* Espacio entre el h4 y el p */
+        margin-top: 0; /* Asegúrate de que no haya margen superior */
+        margin-bottom: 0; /* Asegúrate de que no haya margen inferior */
+        line-height: 1.5; /* Ajusta la altura de línea si es necesario */
+    }
+    .promocion-container h4{
+        color: #54a2e2;
+    }
+
+    /* Texto de remitente */
+    .remitente-container {
+        display: flex; /* O inline-block */
+        align-items: center; /* Alinea verticalmente los elementos */
+    }
+    .remitente-container p {
+        color: black;
+        margin-left: 10px; /* Espacio entre el h4 y el p */
+        margin-top: 0; /* Asegúrate de que no haya margen superior */
+        margin-bottom: 0; /* Asegúrate de que no haya margen inferior */
+        line-height: 1.5; /* Ajusta la altura de línea si es necesario */
+    }
+    .remitente-container h4{
+        color: #54a2e2;
+    }
+
+    /* Texto del asunto */
+    .asunto-container {
+        display: flex; /* O inline-block */
+        align-items: center; /* Alinea verticalmente los elementos */
+    }
+    .asunto-container p {
+        color: black;
+        margin-left: 10px; /* Espacio entre el h4 y el p */
+        margin-top: 0; /* Asegúrate de que no haya margen superior */
+        margin-bottom: 0; /* Asegúrate de que no haya margen inferior */
+        line-height: 1.5; /* Ajusta la altura de línea si es necesario */
+    }
+    .asunto-container h4{
+        color: #54a2e2;
+    }
+
+    /* Texto de vista previa */
+    .vista_previa-container {
+        display: flex; /* O inline-block */
+        align-items: center; /* Alinea verticalmente los elementos */
+    }
+    .vista_previa-container p {
+        color: black;
+        margin-left: 10px; /* Espacio entre el h4 y el p */
+        margin-top: 0; /* Asegúrate de que no haya margen superior */
+        margin-bottom: 0; /* Asegúrate de que no haya margen inferior */
+        line-height: 1.5; /* Ajusta la altura de línea si es necesario */
+    }
+    .vista_previa-container h4{
+        color: #54a2e2;
+    }
+
+    .select_promotion {
+        width: 100%; /* Ancho completo del contenedor */
+        max-width: 380px; /* Ajusta según sea necesario */
+        padding: 10px;
+        border: 1px solid #000; /* Borde negro */
+        border-radius: 15px; /* Bordes redondeados */
+        font-size: 16px;
+        box-sizing: border-box; /* Evita que el padding afecte el ancho total */
+    }
+    
+    .select_promotion:focus {
+        outline: none;
+        border-color: #007bff; /* Cambia el color del borde en el foco */
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Sombra al enfocar */
+    }
+
+    .input-correo {
+        width: 100%; /* Ancho completo del contenedor */
+        max-width: 490px; /* Ajusta según sea necesario */
+        padding: 10px;
+        border: 1px solid #000; /* Borde negro */
+        border-radius: 15px; /* Bordes redondeados */
+        font-size: 16px;
+        box-sizing: border-box; /* Evita que el padding afecte el ancho total */
+    }
+    
+    .input-correo:focus {
+        outline: none;
+        border-color: #007bff; /* Cambia el color del borde en el foco */
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Sombra al enfocar */
+    }
+
+    .input-asunto {
+        width: 100%; /* Ancho completo del contenedor */
+        max-width: 400px; /* Ajusta según sea necesario */
+        padding: 10px;
+        border: 1px solid #000; /* Borde negro */
+        border-radius: 15px; /* Bordes redondeados */
+        font-size: 16px;
+        box-sizing: border-box; /* Evita que el padding afecte el ancho total */
+    }
+    
+    .input-asunto:focus {
+        outline: none;
+        border-color: #007bff; /* Cambia el color del borde en el foco */
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Sombra al enfocar */
+    }
+
+    .asunto-container{
+        display: flex;
+    }
+    
+    .outer-container {
+        position: relative; /* Necesario para el ajuste de posición */
+        overflow: auto; /* Oculta el desbordamiento si es necesario */
+        max-height: fit-content;
+        max-width: fit-content;
+        transform-origin: top left; /* Cambia el origen de la transformación */
+
+    }
+    
+    .container-promotion {  
+        border: 1px solid #54a2e2; /* Opcional: para visualizar el contenedor */
+        border-radius: 15px;
+        padding: 20px;
+        transition: transform 0.3s ease; /* Suaviza la transformación */
+        
+    }
+
+    
+    .btn-enviar-promocion{
+        background-color: #5bbfdf; /* Color azul */
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 8px; /* Bordes redondeados */
+        font-size: 16px; /* Tamaño de la letra */
+        cursor: pointer;
+        transition: background-color 0.5s ease; /* Efecto de transición */
+        margin-top: 40px;
+    }
+
+    .btn-enviar-promocion:hover {
+        background-color: #009ed2; /* Color azul más oscuro en hover */
+    }
